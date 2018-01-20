@@ -1,0 +1,54 @@
+step1 - In action we create a payload which pasically acts as the props. 
+
+step2- That payload then goes to the reducer and then it can be passed as the props in the container. Here we also name the payload 
+
+step3- Then it does to the container, where it passes as 'this.props' 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+									ACTIONS 
+
+return{
+	type: ''
+	payload: 
+}
+
+
+Basically we somehow need to put all the info in the payload. If we are suing some API or JSON file(which we will probably be using), then we
+have to extract all the details from the JSON and pass it as payload 
+ ---------------------------------------------------------------------------------------------------------------------------------------
+
+ 								REDUCERS 
+
+switch statement will be here 
+
+We will be passing the data from the payload using that switch statement as the state. Reducers also change the state, and that updated state passes to the container. 
+
+
+------------------------------------------------------------------------------------------------------------------------------------\
+
+							CONTAINERS 
+
+They will be similar to the conponent, but in container file, we will pass the state as 'this.prop.the_new_state_from_reducer
+
+FANCY WORDS USED- mapDispatchToProps, mapStateToProps, connect, bindActionCreator,
+
+ 
+--------------------------------------------------------------------------------------------------------------------------------------
+						/src/index.js 
+
+FANCY TERMS- 
+
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+
+const createStoreWithMiddleware = applyMiddleware(ReduxPromise)(createStore);
+
+
+ <Provider store={createStoreWithMiddleware(reducers)}>
+
+
+
+
+
+

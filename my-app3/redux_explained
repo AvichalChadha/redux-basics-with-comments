@@ -33,6 +33,74 @@ They will be similar to the conponent, but in container file, we will pass the s
 
 FANCY WORDS USED- mapDispatchToProps, mapStateToProps, connect, bindActionCreator,
 
+
+
+
+So apparently, we don't have to use mapDispatchToProps and mapStateToProps togeter. We might be using one or we might be
+using both. It all depends! 
+							=========================================================
+
+CASE1 - WHEN WE ARE ONLY USING 'mapStateToProps'
+
+First of all if we use this, it means that we are taking the state from the reducers and then using that state in the container. So oviously if we don't need to pass the state in the container, then we don't fucking use it. 
+
+So the props/data is in the /action/index.js file and 
+ 
+
+
+
+
+HOW DO WE CONNECT STATE FROM  'reducer/somefile.js' TO 'container' ????
+
+We change the state in the reducer/somefile.js and then pass it to the reducer/index.js file and then it goes to the
+container and then using mapStateToProps, we use at 'this.props'
+
+
+
+
+Its format- 
+
+function mapStateToProps({ weather }) {
+  return { weather };
+}
+
+export default connect(mapStateToProps)(WeatherList);
+
+                               ===========================================================
+
+CASE2 - WHEN WE ARE ONLY USING 'mapDispatchToProps'
+
+This happens when we are passing the actual data from the action creators to the container. 
+LETS NOT GET US CONFUSE- We use mapStateToProps, when we want to pass state to the containers. 
+In mapDispatchToProps, we are getting the data/props from the action/index.js file and then it goes to the container file
+(not directly, we pass it through the reducer, we don't have to write the code for it). There we use it as 'this.props'
+
+
+
+I KNOW WHAT YOU ARE FUCKING THINKING, AND IF YOU ARE NOT THEN YOU ARE FUCKED, COZ THIS IS WHAT YOU SHOULD BE FUCKING
+THINK---
+
+Yes, we use 'this.props' in both mapStateToProps and mapDispatchToProps. 
+
+
+
+
+ITS FORMAT- 
+
+
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({ fetchWeather }, dispatch);
+  }
+  
+  export default connect(null, mapDispatchToProps)(SearchBar);
+
+
+Notice that we are using 'null' because 'export default connect()' takes two argument- mapDispatchToProps and
+ mapStateToProps
+And if we don't have 'mapStateToProps' to pass, then we will be passing 'null'
+
+
+								==========================================================
  
 --------------------------------------------------------------------------------------------------------------------------------------
 						/src/index.js 

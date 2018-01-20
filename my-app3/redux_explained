@@ -1,5 +1,5 @@
 
-step1- In action we create a payload which pasically acts as the 
+step1 - In action we create a payload which pasically acts as the 
 props. 
 
 step2- That payload then goes to the reducer and then it can be passed as the props in the container. Here we also name the payload 
